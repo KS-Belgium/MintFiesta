@@ -43,7 +43,7 @@ If you do not have a Firebase Realtime Database set up yet, follow these steps:
    - Go to Firebase and create a new Realtime Database.
 
 2. **Import JSON File:**
-   - Import the JSON file located at `react-app/src/model/MintyFiesta_database_export.json` into your newly created Firebase Realtime Database.
+   - Import the JSON file located at `react-app/public/MintyFiesta_database_export.json` into your newly created Firebase Realtime Database.
 
 3. **Configure Project Settings:**
    - Navigate to "Project Overview" and then to "Project Settings" in Firebase.
@@ -73,7 +73,7 @@ Once logged in, you can view and modify the test event, including adding NFTs, s
 
 ### User Section
 
-By scanning the QR code of the event or a sponsor for the first time, you can enter your email and the unique code received to validate that you are a participant in this event. A test account is pre-configured in the template database with the following credentials:
+By scanning the QR code (the test QR codes can be found in public/img/QRCode.png) of the event or a sponsor for the first time, you can enter your email and the unique code received to validate that you are a participant in this event. A test account is pre-configured in the template database with the following credentials:
 - Email: participant1@mail.com
 - Password: test
 
