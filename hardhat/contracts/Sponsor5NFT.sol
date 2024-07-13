@@ -5,10 +5,10 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-contract OctopusNFT is ERC721URIStorage, Ownable {
+contract Sponsor5NFT is ERC721URIStorage, Ownable {
     uint256 public tokenCounter;
     constructor(address initialOwner)
-    ERC721("OctopusNFT", "OCT")
+    ERC721("Sponsor5NFT", "SPS")
     Ownable(initialOwner)
     {
         tokenCounter = 0;

@@ -5,19 +5,22 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-contract OctopusNFT is ERC721URIStorage, Ownable {
-    uint256 public tokenCounter;
+contract AuctionNFT is ERC721URIStorage, Ownable {
+    bool public isMinted;
     constructor(address initialOwner)
-    ERC721("OctopusNFT", "OCT")
+    ERC721("AuctionNFT", "ACT")
     Ownable(initialOwner)
     {
-        tokenCounter = 0;
+        isMinted = false;
     }
 
 
     function mintNFT(address recipient, string memory tokenURI) public onlyOwner {
-        uint256 tokenId = tokenCounter;
-        tokenCounter = tokenCounter + 1;
+        require(!isMinted, "NFT has already been minted.");
+
+        uint256 tokenId = 0;
+        isMinted = true;
+
         _mint(recipient, tokenId);
         _setTokenURI(tokenId, tokenURI);
     }
