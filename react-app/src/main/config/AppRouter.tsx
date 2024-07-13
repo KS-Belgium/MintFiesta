@@ -16,7 +16,6 @@ function AppRouter() {
                 <Route path="/wallet" element={<WalletCo />} />
                 <Route path="/scan" element={<QRCodeScan />} />
                 <Route path="/sponsor" element={<SponsorPage />} />
-                <Route path="/sponsor" element={<SponsorPage />} />
             </Routes>
         </BrowserRouter>
     );

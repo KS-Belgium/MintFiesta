@@ -25,6 +25,7 @@
   "events": {
     "event3": {
       "infos": {
+        "id": "event3",
         "description": "A beautiful event",
         "end_date": "2024-07-14",
         "img": "https://aquamarine-obvious-bovid-243.mypinata.cloud/ipfs/QmZ15d3c8qic2PMFqQqG5jfBep2LZDX1a2hpQtLuVLUr7M",
@@ -93,32 +94,37 @@
   "sponsors": {
     "sponsor1": {
       "id": "sponsor1",
+      "img": "/img/sponsors/Logo Celo.png",
       "name": "Celo",
-      "id_event": 1,
+      "id_event": "event3",
       "nfts": ["nft1"]
     },
     "sponsor2": {
       "id": "sponsor2",
+      "img": "/img/sponsors/Rootstock crypto logo.png",
       "name": "Rootstock",
-      "id_event": 2,
+      "id_event": "event3",
       "nfts": ["nft2"]
     },
     "sponsor3": {
       "id": "sponsor3",
+      "img": "/img/sponsors/Safe Crypto Logo.png",
       "name": "Safe",
-      "id_event": 3,
+      "id_event": "event3",
       "nfts": ["nft3"]
     },
     "sponsor4": {
       "id": "sponsor4",
+      "img": "/img/sponsors/Logo Blockscout.png",
       "name": "Blockscout",
-      "id_event": 3,
+      "id_event": "event3",
       "nfts": ["nft4"]
     },
     "sponsor5": {
       "id": "sponsor4",
+      "img": "/img/sponsors/Logo MetaMask Fox.png",
       "name": "MetaMask",
-      "id_event": 3,
+      "id_event": "event3",
       "nfts": ["nft5"]
     }
   }
