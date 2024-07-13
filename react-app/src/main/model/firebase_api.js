@@ -45,6 +45,30 @@ export async function getPwdByMail(mail) {
     }
 }
 
+export async function getAdminEventsByMail(mail) {
+    try {
+        const dbRef = ref(db, 'admins');
+        const snapshot = await get(dbRef);
+        const admins = snapshot.val();
+        let admin = null;
+
+        for (let key in admins) {
+            if (admins[key].mail === mail) {
+                admin = admins[key];
+                break;
+            }
+        }
+
+        if (admin) {
+            return admin.events;
+        } else {
+            throw new Error(`No admin found with mail: ${mail}`);
+        }
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
 export async function getEventById(id) {
     try {
         const eventRef = ref(db, `events/${id}`);
