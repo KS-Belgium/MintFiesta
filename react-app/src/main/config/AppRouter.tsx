@@ -7,7 +7,7 @@ function AppRouter() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/test" element={<WalletCo />} />
+                <Route path="/wallet" element={<WalletCo />} />
             </Routes>
         </BrowserRouter>
     );
