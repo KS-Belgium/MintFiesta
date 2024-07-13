@@ -18,7 +18,7 @@ contract AuctionNFT is ERC721URIStorage, Ownable {
     function mintNFT(address recipient, string memory tokenURI) public onlyOwner {
         require(!isMinted, "NFT has already been minted.");
 
-        uint256 tokenId = 0;
+        uint256 tokenId = uint256(0);
         isMinted = true;
 
         _mint(recipient, tokenId);
