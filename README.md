@@ -23,7 +23,7 @@ The integration with Rootstock and Zircuit was smooth and robust, offering advan
 This project combines the latest blockchain technologies with a user-friendly interface to create an immersive event experience while providing sponsors with a platform to showcase their own NFTs. The successful integration with Rootstock and Zircuit enhances the security and reliability of our decentralized application.
 
 ## More Documentation
-- About the [front-end](https://github.com/WillHCode/MintFiesta/tree/62183f1b778a2892fd954385a4e0adcc98c3f6e5/hardhat)
+- About the [front-end](https://github.com/WillHCode/MintFiesta/blob/62183f1b778a2892fd954385a4e0adcc98c3f6e5/react-app/README.md)
 - About the [back-end](https://github.com/WillHCode/MintFiesta/blob/62183f1b778a2892fd954385a4e0adcc98c3f6e5/hardhat/README.md)
 
 ## Built With
