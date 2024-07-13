@@ -12,6 +12,7 @@ function AppRouter() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/event" element={<EventPage />} />
+                <Route path="/auth" element={<Authentication />} />
                 <Route path="/wallet" element={<WalletCo />} />
                 <Route path="/scan" element={<QRCodeScan />} />
                 <Route path="/sponsor" element={<SponsorPage />} />
