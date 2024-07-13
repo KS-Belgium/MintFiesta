@@ -1,0 +1,65 @@
+/* SponsorPage.css */
+.sponsor-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.sponsor-page h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.sponsor-page h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.sponsor-page h3 {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.sponsor-page p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.sponsor-page img {
+    width: 80%;
+    max-width: 300px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.sponsor-page button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 20px 0;
+}
+
+.sponsor-page button:hover {
+    background-color: #333;
+}
+
+.sponsor-page .waiting-for-you {
+    margin-top: 20px;
+}
+
+.sponsor-page .waiting-for-you img {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+}
