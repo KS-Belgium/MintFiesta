@@ -77,7 +77,7 @@ export async function getEventByName(eventName) {
         let event = null;
 
         for (let key in events) {
-            if (events[key].infos.nom === eventName) {
+            if (events[key].infos.name === eventName) {
                 event = events[key];
                 break;
             }
@@ -165,20 +165,23 @@ export async function getParticipantByWallet(wallet) {
     }
 }
 
-export async function getAllSponsorsByEvent(event_id) {
+// Ajoutez cette fonction pour obtenir les sponsors par ID d'événement
+export async function getSponsorsByEvent(eventId) {
     try {
-        const sponsorsRef = query(ref(db, 'sponsors'), orderByChild('event_id'), equalTo(event_id));
+        const sponsorsRef = ref(db, 'sponsors');
         const snapshot = await get(sponsorsRef);
         const sponsors = snapshot.val();
-        if (sponsors) {
-            return Object.values(sponsors);
-        } else {
-            return [];
+        let sponsorsList = [];
+        for (let key in sponsors) {
+            if(sponsors[key].id_event == eventId){
+                sponsorsList.push(sponsors[key]);}
         }
+        return sponsorsList;
     } catch (error) {
         throw new Error(error.message);
     }
 }
+
 
 export async function getSponsorById(id) {
     try {
