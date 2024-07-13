@@ -5,7 +5,7 @@ import { SHA256 } from "crypto-js";
 function HomePage() {
     const [isConnect, setIsConnect] = useState(false);
     const [showLoginForm, setShowLoginForm] = useState(false);
-    const [showRegistreForm, setshowRegistreForm] = useState(false);
+    const [showRegistreForm, setShowRegistreForm] = useState(false);
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
     const [events, setEvents] = useState<any[]>([]); // Tableau pour stocker les détails des événements
@@ -14,24 +14,35 @@ function HomePage() {
         // Fonction pour charger les événements une fois connecté
         const loadAdminEvents = async () => {
             try {
-                const event = await getEventByName("ETH-Brussels"); // Remplacez par le nom de l'événement souhaité
-                setEvents([event]);
+                const adminEvents = await getAdminEventsByMail(mail); // Récupérer les événements de l'admin par son email
+                let eventsList = [];
+        
+                // Parcourir les événements récupérés
+                for (const eventId in adminEvents) {
+                    const eventDetails = await getEventByName(adminEvents[eventId]);
+                    if (eventDetails) {
+                        eventsList.push(eventDetails); // Ajouter les détails de l'événement à la liste
+                    }
+                }
+        
+                // Mettre à jour le state avec la liste des événements
+                setEvents(eventsList);
             } catch (error) {
                 console.error("Error loading admin events:", error);
             }
-        };
+        };        
 
-        if (isConnect) {
+        if (isConnect && mail) { // Assurez-vous que mail n'est pas vide avant de charger les événements
             loadAdminEvents();
         }
-    }, [isConnect]); // Dépendance pour recharger lorsque isConnect change
+    }, [isConnect, mail]);
 
     const handleLoginClick = () => {
         setShowLoginForm(true);
     };
 
-    const handleLoginClick2 = () => {
-        setshowRegistreForm(true);
+    const handleRegisterForm = () => {
+        setShowRegistreForm(true);
     };
 
     const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -51,22 +62,29 @@ function HomePage() {
 
     return (
         <div>
-            <h1>Home Page</h1>
+            <h1>Page d'accueil</h1>
             {isConnect && (
                 <div>
                     <h2>Gérer mes événements</h2>
                     <ul>
                         {events.map((event, index) => (
-                            <li key={index}>{event.infos.nom}</li>
+                            <li key={index}>
+                                <strong>Nom de l'événement:</strong> {event.nom} <br />
+                                <strong>Date de début:</strong> {event.start_date} <br />
+                                <strong>Date de fin:</strong> {event.end_date} <br />
+                                <strong>Description:</strong> {event.description} <br />
+                                {/* Ajoutez d'autres détails de l'événement ici si nécessaire */}
+                            </li>
                         ))}
                     </ul>
                 </div>
             )}
+            
             {!isConnect && !showLoginForm && !showRegistreForm && (
                 <div>
                     <p>Bonjour bienvenue sur notre site. Vous pouvez vous connecter ou demander à créer votre événement.</p>
                     <button onClick={handleLoginClick}>Se connecter</button>
-                    <button onClick={handleLoginClick2}>Créer un événement</button>
+                    <button onClick={handleRegisterForm}>Créer un événement</button>
                 </div>
             )}
 
