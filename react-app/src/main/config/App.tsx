@@ -1,11 +1,15 @@
-import '../styles/App.css'
+import QrReader from "react-qr-scanner";
+import { Scanner } from "@yudiel/react-qr-scanner";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import QRCodeScanButton from "../component/QRCodeScanButton.tsx";
 import AppRouter from "./AppRouter.tsx";
 
-function App() {
+export default function App() {
 
-  return (
-      <AppRouter />
-  )
+    return (
+        <div className="App">
+            <AppRouter/>
+        </div>
+    );
 }
-
-export default App
