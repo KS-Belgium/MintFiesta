@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getPwdByMail, getAdminEventsByMail, getEventById } from "../model/firebase_api.js";
+import { getPwdByMail, getAdminEventsByMail, getEventByName } from "../model/firebase_api.js";
 import { SHA256 } from "crypto-js";
 
 function HomePage() {
@@ -14,12 +14,8 @@ function HomePage() {
         // Fonction pour charger les événements une fois connecté
         const loadAdminEvents = async () => {
             try {
-                const eventIds = await getAdminEventsByMail(mail);
-                const eventsData = await Promise.all(eventIds.map(async (eventId: number) => {
-                    const event = await getEventById(eventId);
-                    return event;
-                }));
-                setEvents(eventsData);
+                const event = await getEventByName("ETH-Brussels"); // Remplacez par le nom de l'événement souhaité
+                setEvents([event]);
             } catch (error) {
                 console.error("Error loading admin events:", error);
             }
@@ -28,7 +24,7 @@ function HomePage() {
         if (isConnect) {
             loadAdminEvents();
         }
-    }, [isConnect, mail]); // Dépendances pour recharger lorsque isConnect ou mail change
+    }, [isConnect]); // Dépendance pour recharger lorsque isConnect change
 
     const handleLoginClick = () => {
         setShowLoginForm(true);
@@ -60,13 +56,13 @@ function HomePage() {
                 <div>
                     <h2>Gérer mes événements</h2>
                     <ul>
-                        {events.map(event => (
-                            <li key={event.id}>{event.nom}</li>
+                        {events.map((event, index) => (
+                            <li key={index}>{event.infos.nom}</li>
                         ))}
                     </ul>
                 </div>
             )}
-            {!isConnect && !showLoginForm && !showRegistreForm &&(
+            {!isConnect && !showLoginForm && !showRegistreForm && (
                 <div>
                     <p>Bonjour bienvenue sur notre site. Vous pouvez vous connecter ou demander à créer votre événement.</p>
                     <button onClick={handleLoginClick}>Se connecter</button>
@@ -74,7 +70,7 @@ function HomePage() {
                 </div>
             )}
 
-            {!isConnect && showRegistreForm &&(
+            {!isConnect && showRegistreForm && (
                 <div>
                     <p>Formulaire d'inscription</p>
                 </div>

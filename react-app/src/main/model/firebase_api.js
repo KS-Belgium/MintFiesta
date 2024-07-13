@@ -69,15 +69,19 @@ export async function getAdminEventsByMail(mail) {
     }
 }
 
-export async function getEventById(id) {
+export async function getEventByName(eventName) {
     try {
-        const eventRef = ref(db, `events/${id}`);
-        const snapshot = await get(eventRef);
-        const event = snapshot.val();
-        if (event) {
-            return event;
+        const db = getDatabase();
+        const eventsRef = query(ref(db, 'events'), orderByChild('infos/nom'), equalTo(eventName));
+        const snapshot = await get(eventsRef);
+        const eventData = snapshot.val();
+        
+        if (eventData) {
+            // On retourne la première clé trouvée (en supposant que les noms d'événements sont uniques)
+            const eventId = Object.keys(eventData)[0];
+            return eventData[eventId];
         } else {
-            throw new Error(`No event found with id: ${id}`);
+            throw new Error(`No event found with name: ${eventName}`);
         }
     } catch (error) {
         throw new Error(error.message);
