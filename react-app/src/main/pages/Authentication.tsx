@@ -6,7 +6,7 @@ function Authentication() {
     const [mail, setMail] = useState('');
     const [code, setCode] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const [idEvent, setIdEvent] = useState('');
+    const [idEvent, setIdEvent] = useState(''); // FAUT LE RECUP SELON LE QR CODE
     const [idParticipant, setIdParticipant] = useState('');
 
     const handleFormSubmit = async (e) => {
@@ -17,7 +17,7 @@ function Authentication() {
                 alert("Connexion réussie");
                 setErrorMessage('');
                 setIdParticipant(participant.id);
-                // Rediriger ou effectuer d'autres actions après la connexion réussie
+                // Rediriger VERS UNE PAGE EVENT AVEC L'ID DE L'EVENT ET L'ID DU PARTICIPANT CONNECTE
             } else {
                 setErrorMessage("Erreur de connexion : code incorrect");
             }
