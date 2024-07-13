@@ -2,7 +2,7 @@
   "admins": {
     "admin1": {
       "mail": "admin1@mail.com",
-      "password": "hashPwd",
+      "password": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
       "events": ["ETH-Paris","ETH-Frankfurt","ETH-London","ETH-Brussels"]
     }
   },
@@ -84,7 +84,7 @@
   "participants": {
     "participant1": {
       "mail": "participant1@mail.com",
-      "password": "hashPwd",
+      "code": "test",
       "nfts": ["nft1", "nft3", "nft5"],
       "id_event": "event3",
       "address": "0x40E10B86cCED8AfCa1F10326a24A78c7d341A5Df"

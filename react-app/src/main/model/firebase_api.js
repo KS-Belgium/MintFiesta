@@ -1,26 +1,27 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get, query, orderByChild, equalTo, set, update, push } from "firebase/database";
-import { SHA256 } from "crypto-js";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getDatabase, ref, get, query, orderByChild, equalTo, push, set, update } from "firebase/database";
+import SHA256 from "crypto-js/sha256";
 
-// Your web app's Firebase configuration
+// Configuration Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyA4E2AMzI9smHtLbvjN3CEx0FW0-YU3zlM",
-  authDomain: "mintyfiesta.firebaseapp.com",
-  databaseURL: "https://mintyfiesta-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "mintyfiesta",
-  storageBucket: "mintyfiesta.appspot.com",
-  messagingSenderId: "286902051464",
-  appId: "1:286902051464:web:ed03e71a91721d848cf53d",
-  measurementId: "G-J44V58NLLK"
+    apiKey: "AIzaSyA4E2AMzI9smHtLbvjN3CEx0FW0-YU3zlM",
+    authDomain: "mintyfiesta.firebaseapp.com",
+    databaseURL: "https://mintyfiesta-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "mintyfiesta",
+    storageBucket: "mintyfiesta.appspot.com",
+    messagingSenderId: "286902051464",
+    appId: "1:286902051464:web:ed03e71a91721d848cf53d",
+    measurementId: "G-J44V58NLLK"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// GETTERS
+export { db, collection, addDoc };
 
+// Function to get password by email
 export async function getPwdByMail(mail) {
     try {
         const dbRef = ref(db, 'admins');
@@ -34,7 +35,6 @@ export async function getPwdByMail(mail) {
                 break;
             }
         }
-
         if (admin) {
             return admin.password;
         } else {
@@ -45,6 +45,7 @@ export async function getPwdByMail(mail) {
     }
 }
 
+// Function to get event by ID
 export async function getEventById(id) {
     try {
         const eventRef = ref(db, `events/${id}`);
@@ -60,24 +61,9 @@ export async function getEventById(id) {
     }
 }
 
-export async function getCatById(id) {
-    try {
-        const catRef = ref(db, `categories/${id}`);
-        const snapshot = await get(catRef);
-        const cat = snapshot.val();
-        if (cat) {
-            return cat;
-        } else {
-            throw new Error(`No category found with id: ${id}`);
-        }
-    } catch (error) {
-        throw new Error(error.message);
-    }
-}
-
+// Function to get participant by email
 export async function getParticipantByMail(mail, idEvent) {
     try {
-        // Récupérer tous les participants
         const participantsRef = ref(db, 'participants');
         const participantsSnapshot = await get(participantsRef);
         const participants = participantsSnapshot.val();
@@ -85,7 +71,6 @@ export async function getParticipantByMail(mail, idEvent) {
         let participant = null;
         let isInEvent = false;
 
-        // Recherche du participant par email
         for (const key in participants) {
             if (participants[key].mail === mail) {
                 participant = participants[key];
@@ -93,21 +78,18 @@ export async function getParticipantByMail(mail, idEvent) {
             }
         }
 
-        // Vérifier s'il existe un participant avec cet email
         if (!participant) {
             throw new Error(`Participant not found with email: ${mail}`);
         }
 
-        // Vérifier s'il participe à l'événement spécifié
         const eventRef = ref(db, `events/${idEvent}/participants`);
         const eventSnapshot = await get(eventRef);
         const eventParticipants = eventSnapshot.val();
 
-        if (eventParticipants && eventParticipants.includes(participant.id)) {
+        if (eventParticipants && Object.values(eventParticipants).includes(participant.mail)) {
             isInEvent = true;
         }
 
-        // Si le participant est dans l'événement, le retourner
         if (isInEvent) {
             return participant;
         } else {
@@ -118,9 +100,10 @@ export async function getParticipantByMail(mail, idEvent) {
     }
 }
 
+// Function to get participant by wallet address
 export async function getParticipantByWallet(wallet) {
     try {
-        const participantsRef = query(ref(db, 'participants'), orderByChild('wallet'), equalTo(wallet));
+        const participantsRef = query(ref(db, 'participants'), orderByChild('address'), equalTo(wallet));
         const snapshot = await get(participantsRef);
         const participants = snapshot.val();
         if (participants) {
@@ -134,9 +117,10 @@ export async function getParticipantByWallet(wallet) {
     }
 }
 
+// Function to get all sponsors by event ID
 export async function getAllSponsorsByEvent(event_id) {
     try {
-        const sponsorsRef = query(ref(db, 'sponsors'), orderByChild('event_id'), equalTo(event_id));
+        const sponsorsRef = query(ref(db, 'sponsors'), orderByChild('id_event'), equalTo(event_id));
         const snapshot = await get(sponsorsRef);
         const sponsors = snapshot.val();
         if (sponsors) {
@@ -149,6 +133,7 @@ export async function getAllSponsorsByEvent(event_id) {
     }
 }
 
+// Function to get sponsor by ID
 export async function getSponsorById(id) {
     try {
         const sponsorRef = ref(db, `sponsors/${id}`);
@@ -164,9 +149,10 @@ export async function getSponsorById(id) {
     }
 }
 
+// Function to get contenue by ID
 export async function getContenueById(id) {
     try {
-        const contenueRef = ref(db, `contenues/${id}`);
+        const contenueRef = ref(db, `contenus/${id}`);
         const snapshot = await get(contenueRef);
         return snapshot.val();
     } catch (error) {
@@ -174,6 +160,7 @@ export async function getContenueById(id) {
     }
 }
 
+// Function to get NFT by ID
 export async function getNftById(id) {
     try {
         const nftRef = ref(db, `nfts/${id}`);
@@ -189,6 +176,7 @@ export async function getNftById(id) {
     }
 }
 
+// Function to get encheres by ID
 export async function getEncheresById(id) {
     try {
         const enchRef = ref(db, `encheres/${id}`);
@@ -206,27 +194,24 @@ export async function getEncheresById(id) {
 
 // SETTERS
 
+// Function to add a user to an event
 export async function addUserOnEvent(eventId, mail) {
     try {
-        // Générer un identifiant unique pour le participant
         const participantRef = push(ref(db, 'participants'));
         const participantId = participantRef.key;
-
-        // Générer le code basé sur le hash de l'email
         const code = SHA256(mail).toString();
 
-        // Ajouter le participant dans la table participants
         await set(participantRef, {
             code: code,
             mail: mail,
-            signature: "",
-            wallet: ""
+            nfts: [],
+            id_event: eventId,
+            address: ""
         });
 
-        // Ajouter l'ID du participant à la liste des participants de l'événement
         const eventParticipantsRef = ref(db, `events/${eventId}/participants`);
         await update(eventParticipantsRef, {
-            [participantId]: true
+            [participantId]: mail
         });
 
         console.log(`Participant ${mail} added to event ${eventId}`);
@@ -235,11 +220,12 @@ export async function addUserOnEvent(eventId, mail) {
     }
 }
 
+// Function to set wallet by participant email
 export async function setWalletByParticipantMail(mail, wallet) {
     try {
         const participant = await getParticipantByMail(mail);
         const participantKey = Object.keys(participant)[0];
-        await update(ref(db, `participants/${participantKey}`), { wallet: wallet });
+        await update(ref(db, `participants/${participantKey}`), { address: wallet });
         return { success: true, message: 'Wallet updated successfully' };
     } catch (error) {
         throw new Error(error.message);
