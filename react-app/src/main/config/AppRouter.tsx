@@ -6,6 +6,7 @@ import Authentication from "../pages/Authentication.tsx";
 import SponsorPage from "../pages/SponsorPage";
 import EventPage from "../pages/EventPage.tsx";
 import AccountPage from "../pages/AccountPage.tsx";
+import ComingSoon from "../component/ComingSoon.tsx";
 
 function AppRouter() {
     return (
@@ -16,7 +17,8 @@ function AppRouter() {
                 <Route path="/auth" element={<Authentication />} />
                 <Route path="/wallet" element={<WalletCo />} />
                 <Route path="/scan" element={<QRCodeScan />} />
-                <Route path="/sponsor" element={<SponsorPage />} />
+                <Route path="/sponsor/:sponsorId" element={<SponsorPage />} />
+                <Route path="/coming-soon" element={<ComingSoon />} />
                 <Route path="/account" element={<AccountPage />} />
             </Routes>
         </BrowserRouter>
