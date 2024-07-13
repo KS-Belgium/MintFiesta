@@ -1,6 +1,7 @@
 import "../styles/AccountPage.css";
 import React, { useState, useEffect } from 'react';
 import { getParticipantByMail, getAllNfts } from "../model/firebase_api";
+import Navbar from "../component/Navbar.tsx";
 
 function AccountPage() {
     const mail = "participant1@mail.com";
@@ -75,6 +76,7 @@ function AccountPage() {
                     </div>
                 </div>
             ))}
+            <Navbar/>
         </div>
     );
 }

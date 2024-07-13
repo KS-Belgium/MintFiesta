@@ -5,7 +5,7 @@ function Navbar() {
         <nav className="navbar">
             <ul >
                 <li>
-                    <Link to={"/"}>
+                    <Link to={"/coming-soon"}>
                         <img src={"/img/PartyShare.png"}/>
                     </Link>
                 </li>
@@ -15,7 +15,7 @@ function Navbar() {
                     </Link>
                 </li>
                 <li>
-                    <Link to={"/"}>
+                    <Link to={"/account"}>
                         <img src={"/img/Profile.png"}/>
                     </Link>
                 </li>
