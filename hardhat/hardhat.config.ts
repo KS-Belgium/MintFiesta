@@ -11,6 +11,11 @@ const config: HardhatUserConfig = {
       chainId: 31,
       gasPrice: 60000000,
       accounts: [process.env.ROOTSTOCK_TESTNET_PRIVATE_KEY]
+    },
+    zircuit: {
+      url: `https://zircuit1.p2pify.com`,
+      gasPrice: 60000000,
+      accounts: [process.env.ZIRCUIT_PK]
     }
   }
 };
