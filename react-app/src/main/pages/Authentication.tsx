@@ -17,6 +17,7 @@ function Authentication() {
                 alert("Connexion réussie");
                 setErrorMessage('');
                 setIdParticipant(participant.id);
+                window.location.href = "/wallet";
                 // Rediriger VERS UNE PAGE EVENT AVEC L'ID DE L'EVENT ET L'ID DU PARTICIPANT CONNECTE
             } else {
                 setErrorMessage("Erreur de connexion : code incorrect");

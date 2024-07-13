@@ -1,10 +1,18 @@
-// WalletCo.tsx
-import React from "react";
+import React, { useEffect } from "react";
+import { useAccount } from 'wagmi';
+import { useNavigate } from 'react-router-dom';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 
-
 const WalletCo: React.FC = () => {
+    const { isConnected } = useAccount();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isConnected) {
+            navigate('/event');
+        }
+    }, [isConnected, navigate]);
 
     return (
         <div>
