@@ -1,3 +1,4 @@
+import "../styles/QRCodeScanButton.css";
 import QrReader from "react-qr-scanner";
 import { Scanner } from "@yudiel/react-qr-scanner";
 import {useEffect, useState} from "react";

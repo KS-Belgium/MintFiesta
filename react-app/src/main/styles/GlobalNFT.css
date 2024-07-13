@@ -1,0 +1,35 @@
+/* GlobalNFT.css */
+.GlobalNFT {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.GlobalNFT h2 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.EventNFT {
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.EventNFT h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.EventNFT p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.EventNFT img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
