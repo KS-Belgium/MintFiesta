@@ -10,7 +10,10 @@ function QRCodeScan() {
 
     return (
         <div>
-            <Scanner onScan={(result) => window.location.href = result[0].rawValue} previewStyle={previewStyle} />
+            <Scanner onScan={(result) => {
+                window.location.href = "/sponsor";
+            {/*window.location.href = result[0].rawValue*/}
+            }} previewStyle={previewStyle} />
         </div>
     );
 }

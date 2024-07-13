@@ -1,0 +1,17 @@
+/* HomePage.css */
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.ConnectButton, .WalletButton {
+    margin-bottom: 20px;
+}
