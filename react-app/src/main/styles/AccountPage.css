@@ -1,0 +1,19 @@
+.nft-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .nft-item {
+    width: calc(50% - 20px); /* Réduire la largeur à 50% moins un espace de 20px pour le gap */
+    margin-bottom: 20px;
+    text-align: center; /* Centrer le contenu dans chaque élément .nft-item */
+  }
+  
+  .nft-item img {
+    max-width: 100%;
+    height: auto;
+    max-height: 150px; /* Limiter la hauteur maximale des images pour les rendre plus petites */
+    object-fit: contain; /* S'assurer que les images ne déforment pas */
+  }
+  

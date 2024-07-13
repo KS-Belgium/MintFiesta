@@ -229,6 +229,19 @@ export async function getEncheresById(id) {
     }
 }
 
+export async function getAllNfts() {
+    try {
+        const nftRef = query(ref(db, 'nfts'));
+        const snapshot = await get(nftRef);
+        const nft = snapshot.val();
+        console.log(nft);
+       return nft;
+    }
+    catch (error) {
+        throw new Error(error.message);
+    }
+}
+
 // SETTERS
 
 export async function addUserOnEvent(eventId, mail) {
