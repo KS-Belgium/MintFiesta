@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import { getDatabase, ref, get } from "firebase/database";
 import Navbar from "../component/Navbar.tsx";
