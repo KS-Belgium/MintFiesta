@@ -113,7 +113,6 @@ export async function getCatById(id) {
 
 export async function getParticipantByMail(mail, idEvent) {
     try {
-        // Récupérer tous les participants
         const participantsRef = ref(db, 'participants');
         const participantsSnapshot = await get(participantsRef);
         const participants = participantsSnapshot.val();
@@ -121,7 +120,6 @@ export async function getParticipantByMail(mail, idEvent) {
         let participant = null;
         let isInEvent = false;
 
-        // Recherche du participant par email
         for (const key in participants) {
             if (participants[key].mail === mail) {
                 participant = participants[key];
@@ -129,21 +127,18 @@ export async function getParticipantByMail(mail, idEvent) {
             }
         }
 
-        // Vérifier s'il existe un participant avec cet email
         if (!participant) {
             throw new Error(`Participant not found with email: ${mail}`);
         }
 
-        // Vérifier s'il participe à l'événement spécifié
         const eventRef = ref(db, `events/${idEvent}/participants`);
         const eventSnapshot = await get(eventRef);
         const eventParticipants = eventSnapshot.val();
 
-        if (eventParticipants && eventParticipants.includes(participant.id)) {
+        if (eventParticipants && Object.values(eventParticipants).includes(participant.mail)) {
             isInEvent = true;
         }
 
-        // Si le participant est dans l'événement, le retourner
         if (isInEvent) {
             return participant;
         } else {
