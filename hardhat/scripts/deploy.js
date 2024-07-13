@@ -1,14 +1,19 @@
 const { ethers } = require("hardhat");
 
+async function deployTimedNFTContract(deployer) {
+    const timedContractFactory = await ethers.getContractFactory('TimedNFT');
+    const timedNft = await timedContractFactory.deploy(deployer.address);
+    await timedNft.deployed();
+    console.log(
+        `Timed NFT deployed to: ${timedNft.address}\nCopy this address and paste to the 'mint' task in 'hardhat.config.js'`,
+    );
+
+}
+
 async function main() {
     const [deployer] = await ethers.getSigners();
 
-    console.log("Deploying contracts with the account:", deployer.address);
-
-    // const MyToken = await ethers.getContractFactory("MyToken");
-    // const myToken = await MyToken.deploy(1000);
-    //
-    // console.log("Token address:", myToken.address);
+    await deployTimedNFTContract(deployer);
 
     // Deploy Octopus NFT collection
     const octopusContractFactory = await ethers.getContractFactory('OctopusNFT');
