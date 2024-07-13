@@ -1,0 +1,80 @@
+/* GlobalNFT.css */
+.GlobalNFT {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.GlobalNFT h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.EventNFT {
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    overflow: hidden;
+    max-width: 90%;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.EventNFT:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.EventNFT img {
+    width: 100%;
+    display: block;
+}
+
+.EventNFT .text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    text-align: left;
+}
+
+
+.EventNFT h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.EventNFT p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+@media (min-width: 768px) {
+    .GlobalNFT {
+        margin: 60px 0;
+    }
+
+    .GlobalNFT h2 {
+        font-size: 36px;
+    }
+
+    .EventNFT {
+        max-width: 80%;
+    }
+
+    .EventNFT h3 {
+        font-size: 28px;
+    }
+
+    .EventNFT p {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,131 @@
+{
+  "admins": {
+    "admin1": {
+      "mail": "admin1@mail.com",
+      "password": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+      "events": ["ETH-Paris","ETH-Frankfurt","ETH-London","ETH-Brussels"]
+    }
+  },
+  "contenus": {
+    "cont_id": {
+      "enchere_id": "",
+      "is_enchere": false,
+      "nft_id": "",
+      "prix": ""
+    }
+  },
+  "encheres": {
+    "enchere_id": {
+      "cont_id": "",
+      "date": "",
+      "montant": "",
+      "participant_id": ""
+    }
+  },
+  "events": {
+    "event3": {
+      "infos": {
+        "id": "event3",
+        "description": "A beautiful event",
+        "end_date": "2024-07-14",
+        "img": "https://aquamarine-obvious-bovid-243.mypinata.cloud/ipfs/QmZ15d3c8qic2PMFqQqG5jfBep2LZDX1a2hpQtLuVLUr7M",
+        "name": "ETH-Brussels",
+        "start_date": "2024-07-12"
+      },
+      "participants": {
+        "participant1": "participant1@mail.com",
+        "participant2": "participant2@mail.com"
+      }
+    }
+  },
+  "nfts": {
+    "nft1": {
+      "id": 1,
+      "url": "https://aquamarine-obvious-bovid-243.mypinata.cloud/ipfs/Qmdrh99yJYs1GbFgGgsAMh1hU5jWckjmvZdGyL9fdyhY6X",
+      "name": "nft1",
+      "sponsor": "celo",
+      "free": true
+    },
+    "nft2": {
+      "id": 2,
+      "url": "https://aquamarine-obvious-bovid-243.mypinata.cloud/ipfs/QmPcBG7jWX4zHzStdj51da1B9aC2DEsC2tRFEVZi9PJ6T6",
+      "name": "nft2",
+      "sponsor": "rootstock",
+      "free": true
+    },
+    "nft3": {
+      "id": 3,
+      "url": "https://aquamarine-obvious-bovid-243.mypinata.cloud/ipfs/QmbGLnVmLRFdeJsDjYRbMvCEt6i1pb2nGqWWzxqqNTrqnN",
+      "name": "nft3",
+      "sponsor": "safe",
+      "free": true
+    },
+    "nft4": {
+      "id": 4,
+      "url": "https://aquamarine-obvious-bovid-243.mypinata.cloud/ipfs/QmZTfwtVW9CuTW7hzH6dJq3XBxNLJ61K6YjwZy82FM8qhP",
+      "name": "nft4",
+      "sponsor": "metamask",
+      "free": true
+    },
+    "nft5": {
+      "id": 5,
+      "url": "https://aquamarine-obvious-bovid-243.mypinata.cloud/ipfs/QmWE1Tf4Nxca88Jibig7L3th9VNPr3h5PdKh62BvyP8ZNv",
+      "name": "nft5",
+      "sponsor": "blockscout",
+      "free": true
+    },
+    "nft6": {
+      "id": 6,
+      "url": "https://aquamarine-obvious-bovid-243.mypinata.cloud/ipfs/QmZ15d3c8qic2PMFqQqG5jfBep2LZDX1a2hpQtLuVLUr7M",
+      "name": "nft6",
+      "sponsor": null,
+      "free": false
+    }
+  },
+  "participants": {
+    "participant1": {
+      "mail": "participant1@mail.com",
+      "code": "test",
+      "nfts": ["nft1", "nft3", "nft5"],
+      "id_event": 3,
+      "address": "0x40E10B86cCED8AfCa1F10326a24A78c7d341A5Df"
+    }
+  },
+  "sponsors": {
+    "sponsor1": {
+      "id": "sponsor1",
+      "img": "/img/sponsors/Logo Celo.png",
+      "name": "Celo",
+      "id_event": "event3",
+      "nfts": ["nft1"]
+    },
+    "sponsor2": {
+      "id": "sponsor2",
+      "img": "/img/sponsors/Rootstock crypto logo.png",
+      "name": "Rootstock",
+      "id_event": "event3",
+      "nfts": ["nft2"]
+    },
+    "sponsor3": {
+      "id": "sponsor3",
+      "img": "/img/sponsors/Safe Crypto Logo.png",
+      "name": "Safe",
+      "id_event": "event3",
+      "nfts": ["nft3"]
+    },
+    "sponsor4": {
+      "id": "sponsor4",
+      "img": "/img/sponsors/Logo Blockscout.jpg",
+      "name": "Blockscout",
+      "id_event": "event3",
+      "nfts": ["nft4"]
+    },
+    "sponsor5": {
+      "id": "sponsor4",
+      "img": "/img/sponsors/Logo MetaMask Fox.png",
+      "name": "MetaMask",
+      "id_event": "event3",
+      "nfts": ["nft5"]
+    }
+  }
+}
