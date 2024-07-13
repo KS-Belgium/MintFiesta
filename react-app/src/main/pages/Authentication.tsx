@@ -12,7 +12,7 @@ function Authentication() {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const participant = await getParticipantByMail(mail, 1);
+            const participant = await getParticipantByMail(mail, "event3");
             if (participant && participant.code === code) {
                 alert("Connexion réussie");
                 setErrorMessage('');
