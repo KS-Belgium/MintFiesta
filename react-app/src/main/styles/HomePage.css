@@ -15,3 +15,7 @@ h1 {
 .ConnectButton, .WalletButton {
     margin-bottom: 20px;
 }
+
+ul, li {
+    list-style-type: none;
+}

@@ -118,7 +118,6 @@ export async function getParticipantByMail(mail, idEvent) {
         const participants = participantsSnapshot.val();
 
         let participant = null;
-        let isInEvent = false;
 
         for (const key in participants) {
             if (participants[key].mail === mail) {
@@ -128,18 +127,10 @@ export async function getParticipantByMail(mail, idEvent) {
         }
 
         if (!participant) {
-            throw new Error(`Participant not found with email: ${mail}`);
-        }
+            throw new Error(`Participant not found with email: ${mail}`);}
+        
 
-        const eventRef = ref(db, `events/${idEvent}/participants`);
-        const eventSnapshot = await get(eventRef);
-        const eventParticipants = eventSnapshot.val();
-
-        if (eventParticipants && Object.values(eventParticipants).includes(participant.mail)) {
-            isInEvent = true;
-        }
-
-        if (isInEvent) {
+        if (participant.id_event == idEvent) {
             return participant;
         } else {
             throw new Error(`Participant with email ${mail} is not part of event ${idEvent}`);
