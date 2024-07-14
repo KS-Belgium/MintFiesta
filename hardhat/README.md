@@ -11,3 +11,12 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat ignition deploy ./ignition/modules/Lock.ts
 ```
+# Technical Documentation
+
+## Installing Dependencies
+
+To automatically install all necessary dependencies, execute either of the following commands:
+
+```bash
+npm install
+```

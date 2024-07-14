@@ -63,6 +63,19 @@ If you do not have a Firebase Realtime Database set up yet, follow these steps:
    - Replace the current `firebaseConfig` in the file `react-app/src/model/firebase_api.json` with this copied configuration.
 
 ## dApp Explanation
+
+### User Section
+By scanning the QR code (the test QR codes can be found in public/qrToCode.jpg) of the event or a sponsor for the first time, you can enter your email and the unique code received to validate that you are a participant in this event. A test account is pre-configured in the template database with the following credentials:
+- Email: participant1@mail.com
+- Password: test
+
+After validation, you can connect your wallet. Your next login can be done with it. Note that you must be logged in to access internal event pages. On the event or sponsor page, you are free to retrieve free NFTs, bid on exclusives, etc. A QR code scanner is integrated on each page. You also have your profile tab to view all event NFTs and determine which ones you need to complete your collection 😉
+
+You can also share your progress and acquired NFTs on social networks like Farcaster (not yet implemented).
+
+[Example event page](https://cabe-213-214-42-42.ngrok-free.app/auth)
+
+[Example sponsor page](https://cabe-213-214-42-42.ngrok-free.app/auth?sponsorId=sponsor2)
 ### Organizer Section
 
 Upon visiting the main URL, you will have the option to either create an account (not yet implemented) or log in to an existing account in the template database. A test account is pre-configured with the following credentials:
@@ -71,12 +84,4 @@ Upon visiting the main URL, you will have the option to either create an account
 
 Once logged in, you can view and modify the test event, including adding NFTs, sponsors, and participants, or create a new event (not yet implemented).
 
-### User Section
-
-By scanning the QR code (the test QR codes can be found in public/img/QRCode.png) of the event or a sponsor for the first time, you can enter your email and the unique code received to validate that you are a participant in this event. A test account is pre-configured in the template database with the following credentials:
-- Email: participant1@mail.com
-- Password: test
-
-After validation, you can connect your wallet. Your next login can be done with it. Note that you must be logged in to access internal event pages. On the event or sponsor page, you are free to retrieve free NFTs, bid on exclusives, etc. A QR code scanner is integrated on each page. You also have your profile tab to view all event NFTs and determine which ones you need to complete your collection 😉
-
-You can also share your progress and acquired NFTs on social networks like Farcaster (not yet implemented).
+[Main site](https://cabe-213-214-42-42.ngrok-free.app/)
