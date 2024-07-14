@@ -21,7 +21,7 @@ async function mintNFT(contractAddress, contractFactory, cid) {
 
 async function main() {
     const octupusNFT = {
-        contractAddress: '0x57b249861610A072f03667aF50DFfEFbDF707a9A',
+        contractAddress: '0x542b36Eea70Fe1122C530b088A8984bDFD5563a8',
         contractFactory: 'OctopusNFT',
         cid: 'Qmdx6hxQMmPvK1Ct2pk62LRdeHozQZLUR73TWhbmEfxYzY'
     }
@@ -68,32 +68,32 @@ async function main() {
 
     await mintNFT(octupusNFT.contractAddress, octupusNFT.contractFactory, octupusNFT.cid);
 
-    await mintAllSponsors();
-
-    const deployedAddress = '0x27043824EC0A07665A10045fC01cC40B1DDA5c05';
-    const cid = 'Qmdx6hxQMmPvK1Ct2pk62LRdeHozQZLUR73TWhbmEfxYzY';
-
-    const api = (await ethers.getContractFactory('OctopusNFT')).interface;
-    const [signer] = await ethers.getSigners();
-    const octopusNFT = new ethers.Contract(deployedAddress, api, signer);
-
-    const tx = await octopusNFT.mintNFT(signer.address, `ipfs://${cid}`);
-    const receipt = await tx.wait();
-    const { tokenId } = receipt.events[0].args;
-    console.log(`Minted NFT ${deployedAddress} #${tokenId}`);
-
-    await mintAllSponsors();
-
-    const auctionAddress = '0x7BF9935df6C51BF16F79D7Ea9462259FB8B57943';
-    const auctionCid = 'QmUrv2EhB9Utrf1vpDsJ5QSwZQrEaEhyEXz7GxGnQ1FbWe';
-
-    // const auctionApi = (await ethers.getContractFactory('AuctionNFT')).interface;
-    const auction = new ethers.Contract(auctionAddress, auctionApi, signer);
-
-    const auctionTx = await auction.mintNFT(owner, `ipfs://${auctionCid}`);
-    const auctionReceipt = await auctionTx.wait();
-    const { auctionTokenId } = auctionReceipt.events[0].args;
-    console.log(`Minted NFT ${auctionAddress} #${auctionTokenId}`);
+    // await mintAllSponsors();
+    //
+    // const deployedAddress = '0x27043824EC0A07665A10045fC01cC40B1DDA5c05';
+    // const cid = 'Qmdx6hxQMmPvK1Ct2pk62LRdeHozQZLUR73TWhbmEfxYzY';
+    //
+    // const api = (await ethers.getContractFactory('OctopusNFT')).interface;
+    // const [signer] = await ethers.getSigners();
+    // const octopusNFT = new ethers.Contract(deployedAddress, api, signer);
+    //
+    // const tx = await octopusNFT.mintNFT(signer.address, `ipfs://${cid}`);
+    // const receipt = await tx.wait();
+    // const { tokenId } = receipt.events[0].args;
+    // console.log(`Minted NFT ${deployedAddress} #${tokenId}`);
+    //
+    // await mintAllSponsors();
+    //
+    // const auctionAddress = '0x7BF9935df6C51BF16F79D7Ea9462259FB8B57943';
+    // const auctionCid = 'QmUrv2EhB9Utrf1vpDsJ5QSwZQrEaEhyEXz7GxGnQ1FbWe';
+    //
+    // // const auctionApi = (await ethers.getContractFactory('AuctionNFT')).interface;
+    // const auction = new ethers.Contract(auctionAddress, auctionApi, signer);
+    //
+    // const auctionTx = await auction.mintNFT(owner, `ipfs://${auctionCid}`);
+    // const auctionReceipt = await auctionTx.wait();
+    // const { auctionTokenId } = auctionReceipt.events[0].args;
+    // console.log(`Minted NFT ${auctionAddress} #${auctionTokenId}`);
 }
 
 main()
