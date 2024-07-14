@@ -87,7 +87,7 @@ function SponsorPage() {
                     ))}
                 </div>
             )}
-            <button on={mintNFT} disabled={isPending}>
+            <button onClick={mintNFT} disabled={isPending}>
                 Claim
                 {isPending ? 'Confirming...' : 'Mint'}
             </button>
