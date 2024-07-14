@@ -20,7 +20,3 @@ To automatically install all necessary dependencies, execute either of the follo
 ```bash
 npm install
 ```
-or
-```bash
-yarn install
-```
