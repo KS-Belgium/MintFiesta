@@ -1,6 +1,13 @@
 {
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
-    "hardhat": "^2.22.6"
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "chai": "^4.2.0",
+    "hardhat": "^2.22.6",
+    "mocha": "^10.2.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "dotenv": "^16.4.5"
   }
 }
