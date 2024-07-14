@@ -16,10 +16,12 @@ function SponsorPage() {
     const { data: hash, isPending, error, writeContract } = useWriteContract()
 
     async function mintNFT() {
+
         const signer = await window.ethereum.request({ method: 'eth_requestAccounts' })
         const uri = 'ipfs://Qmdx6hxQMmPvK1Ct2pk62LRdeHozQZLUR73TWhbmEfxYzY'
+        console.log(signer[0]);
         writeContract({
-            address: '0x295569c2Fb8b723D22F390D9f2848ae2E12687ED',
+            address: '0xBF8216ff23DF4a91A6dDee33e43e6f21e8224A72',
             abi,
             functionName: 'mintNFT',
             args: [signer[0], uri],
@@ -30,6 +32,7 @@ function SponsorPage() {
         useWaitForTransactionReceipt({
             hash,
         })
+
 
     useEffect(() => {
         const token = localStorage.getItem(`sponsorToken_${sponsorId}`);
@@ -61,9 +64,15 @@ function SponsorPage() {
         fetchSponsor();
     }, [sponsorId]);
 
+    if (error){
+        console.error(error);
+    }
+
     if (!sponsor) {
         return <p>Loading sponsor information...</p>;
     }
+
+
     return (
         <div className="sponsor-page">
             <h2>Sponsor</h2>

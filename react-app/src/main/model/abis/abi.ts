@@ -3,8 +3,13 @@ export const abi = [
         name: 'mintNFT',
         type: 'function',
         stateMutability: 'nonpayable',
-        inputs: [{ internalType: 'uint32', name: 'tokenId', type: 'uint32' },
-            { internalType: 'string', name: 'uri', type: 'string' }],
+        inputs: [{ internalType: 'address', name: 'recipient', type: 'address' },
+            { internalType: 'string', name: 'tokenURI', type: 'string' }],
         outputs: [],
+    },
+    {
+        name: 'Minted',
+        type: 'event',
+        inputs: [{ indexed: true, internalType: 'uint256', name: 'tokenId', type: 'uint256' }]
     }
 ] as const

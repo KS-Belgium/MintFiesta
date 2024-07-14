@@ -21,7 +21,7 @@ async function mintNFT(contractAddress, contractFactory, cid) {
 
 async function main() {
     const octupusNFT = {
-        contractAddress: '0x542b36Eea70Fe1122C530b088A8984bDFD5563a8',
+        contractAddress: '0x69d5D67AAbc0734A7e2aA082F448FE847Fa67765',
         contractFactory: 'OctopusNFT',
         cid: 'Qmdx6hxQMmPvK1Ct2pk62LRdeHozQZLUR73TWhbmEfxYzY'
     }
