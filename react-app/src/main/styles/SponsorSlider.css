@@ -14,7 +14,7 @@
     width: 100%;
     overflow-x: scroll;
     display: flex;
-    justify-content: start;
+    justify-content: center; /* Center align items horizontally */
     gap: 20px;
 }
 
