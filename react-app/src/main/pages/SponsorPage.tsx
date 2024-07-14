@@ -4,11 +4,32 @@ import { getDatabase, ref, get } from "firebase/database";
 import Navbar from "../component/Navbar.tsx";
 import "../styles/SponsorPage.css";
 
+import {BaseError, useWriteContract, useWaitForTransactionReceipt} from 'wagmi'
+import { abi } from '../model/abis/abi'
+
 function SponsorPage() {
     const { sponsorId } = useParams();
     const [sponsor, setSponsor] = useState(null);
     const navigate = useNavigate();
     const [nfts, setNfts] = useState([]);
+
+    const { data: hash, isPending, error, writeContract } = useWriteContract()
+
+    async function mintNFT() {
+        const signer = await window.ethereum.request({ method: 'eth_requestAccounts' })
+        const uri = 'ipfs://Qmdx6hxQMmPvK1Ct2pk62LRdeHozQZLUR73TWhbmEfxYzY'
+        writeContract({
+            address: '0x295569c2Fb8b723D22F390D9f2848ae2E12687ED',
+            abi,
+            functionName: 'mintNFT',
+            args: [signer[0], uri],
+        })
+    }
+
+    const { isLoading: isConfirming, isSuccess: isConfirmed } =
+        useWaitForTransactionReceipt({
+            hash,
+        })
 
     useEffect(() => {
         const token = localStorage.getItem(`sponsorToken_${sponsorId}`);
@@ -43,7 +64,6 @@ function SponsorPage() {
     if (!sponsor) {
         return <p>Loading sponsor information...</p>;
     }
-
     return (
         <div className="sponsor-page">
             <h2>Sponsor</h2>
@@ -59,7 +79,16 @@ function SponsorPage() {
                     ))}
                 </div>
             )}
-            <button>Claim</button>
+            <button onClick={mintNFT} disabled={isPending}>
+                Claim
+                {isPending ? 'Confirming...' : 'Mint'}
+            </button>
+            {hash && <div>Transaction Hash: {hash}</div>}
+            {isConfirming && <div>Waiting for confirmation...</div>}
+            {isConfirmed && <div>Transaction confirmed.</div>}
+            {error && (
+                <div>Error: {(error as BaseError).shortMessage || error.message}</div>
+            )}
             <h3 className="waiting-for-you">What is waiting for you</h3>
             <img src="https://www.dezignercom.com/wp-content/uploads/2024/01/im-produits.jpg" alt="What is waiting for you" className="waiting-for-you" />
             <Navbar />
