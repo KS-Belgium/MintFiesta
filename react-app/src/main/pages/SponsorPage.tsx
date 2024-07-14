@@ -19,7 +19,6 @@ function SponsorPage() {
 
         const signer = await window.ethereum.request({ method: 'eth_requestAccounts' })
         const uri = 'ipfs://Qmdx6hxQMmPvK1Ct2pk62LRdeHozQZLUR73TWhbmEfxYzY'
-        console.log(signer[0]);
         writeContract({
             address: '0xBF8216ff23DF4a91A6dDee33e43e6f21e8224A72',
             abi,
@@ -88,7 +87,7 @@ function SponsorPage() {
                     ))}
                 </div>
             )}
-            <button onClick={mintNFT} disabled={isPending}>
+            <button on={mintNFT} disabled={isPending}>
                 Claim
                 {isPending ? 'Confirming...' : 'Mint'}
             </button>
