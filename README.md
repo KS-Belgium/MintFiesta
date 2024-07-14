@@ -12,7 +12,43 @@ Our team consists of three members, all undergraduate students in computer scien
 - **Member 3 Yassine N’Ciri**
   
 ## Instructions for Testing the Integration
-Help William
+First clone the git depot. Open the folder as a project and run :
+```
+npm install
+cd .\hardhat\ 
+npm install
+cd ..\react-app\
+npm install
+```
+So you will get all the dependencies.
+
+Then add a '.env' inside the "hardhat" folder.
+the .env should look like this :
+```
+ROOTSTOCK_TESTNET_PRIVATE_KEY=""
+PINATA_API_KEY=""
+ZIRCUIT_PK=""
+```
+Pinata (https://app.pinata.cloud/pinmanager) is used to store images and metadata of the NFT needed.
+
+To deploy all the contracts you can run :
+**For Rootstock**
+```
+npx hardhat run --network rskTestnet scripts/deploy.js
+```
+**For Zircuit**
+```
+npx hardhat run --network zircuit scripts/zircuit/deploy.js
+```
+
+To mint all the NFT related to contract you can run :
+```
+npx hardhat run --network rskTestnet scripts/mint.js
+```
+**OR**
+```
+npx hardhat run --network zircuit scripts/mint.js
+```
 
 ## Feedback on the Experience with Rootstock and Zircuit
 The integration with Rootstock and Zircuit was smooth and robust, offering advanced functionalities for contract and transaction management. The documentation and development tools facilitated the implementation of NFT features and auctions for our dApp. Both tools worked perfectly together without any compatibility issues.
