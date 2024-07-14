@@ -23,7 +23,7 @@ The integration with Rootstock and Zircuit was smooth and robust, offering advan
 This project combines the latest blockchain technologies with a user-friendly interface to create an immersive event experience while providing sponsors with a platform to showcase their own NFTs. The successful integration with Rootstock and Zircuit enhances the security and reliability of our decentralized application.
 
 ## More Documentation
-- About the [front-end](react-app/README.md) !You can test the dApp here!
+- About the [front-end](react-app/README.md) 
 - About the [back-end](hardhat/README.md)
 
 ## Built With
